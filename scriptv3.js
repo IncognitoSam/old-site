@@ -2,7 +2,7 @@ var playerSymbol = "X";
 var turn = 0;
 
 function resetGame() {
-    playerSymbol = "X";
+    //playerSymbol = "X";
     turn = 0;
     document.getElementById("b1").innerHTML = "";
     document.getElementById("b2").innerHTML = "";
@@ -51,6 +51,7 @@ function fillSquare(clicked_id) {
         turn = turn + 1;
         if (turn > 8) {
             alert("It's a tie.");
+            resetGame();
         }
 
         if (playerSymbol == "X") {
