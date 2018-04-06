@@ -44,7 +44,6 @@ function checkWin() {
 }
 
 function fillSquare(clicked_id) {    
-    checkWin();
     if(document.getElementById(clicked_id).innerHTML == "") {
     	document.getElementById(clicked_id).innerHTML = playerSymbol;
         checkWin();
