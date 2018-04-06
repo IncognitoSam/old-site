@@ -58,6 +58,7 @@ function fillSquare(clicked_id) {
         document.getElementById(clicked_id).classList.add("played");
         checkWin();
         turn = turn + 1;
+        checkWin();
         if (turn > 8) {
             alert("It's a tie.");
             resetGame();
