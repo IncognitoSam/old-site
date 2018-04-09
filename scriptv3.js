@@ -1,9 +1,9 @@
 var playerSymbol = "X";
-var turn = 0;
+var turn = 1;
 
 function resetGame() {
-    //playerSymbol = "X";
-    turn = 0;
+    playerSymbol = "X";
+    turn = 1;
     document.getElementById("b1").innerHTML = "-";
     document.getElementById("b2").innerHTML = "-";
     document.getElementById("b3").innerHTML = "-";
@@ -26,29 +26,37 @@ function resetGame() {
 
 function checkWin() {
     if ((document.getElementById("b1").innerHTML == playerSymbol) && (document.getElementById("b2").innerHTML == playerSymbol) && (document.getElementById("b3").innerHTML == playerSymbol)) {
-        alert(playerSymbol + " wins!");
+        document.getElementById("result").innerHTML = (playerSymbol + " wins!");
         resetGame();
+        return true;
     } else if ((document.getElementById("b4").innerHTML == playerSymbol) && (document.getElementById("b5").innerHTML == playerSymbol) && (document.getElementById("b6").innerHTML == playerSymbol)) {
-        alert(playerSymbol + " wins!");
+        document.getElementById("result").innerHTML = (playerSymbol + " wins!");
         resetGame();
+        return true;
     } else if ((document.getElementById("b7").innerHTML == playerSymbol) && (document.getElementById("b8").innerHTML == playerSymbol) && (document.getElementById("b9").innerHTML == playerSymbol)) {
-        alert(playerSymbol + " wins!");   
+        document.getElementById("result").innerHTML = (playerSymbol + " wins!");   
         resetGame();
+        return true;
     } else if ((document.getElementById("b1").innerHTML == playerSymbol) && (document.getElementById("b4").innerHTML == playerSymbol) && (document.getElementById("b7").innerHTML == playerSymbol)) {
-        alert(playerSymbol + " wins!");
+        document.getElementById("result").innerHTML = (playerSymbol + " wins!");
         resetGame();
+        return true;
     } else if ((document.getElementById("b2").innerHTML == playerSymbol) && (document.getElementById("b5").innerHTML == playerSymbol) && (document.getElementById("b8").innerHTML == playerSymbol)) {
-        alert(playerSymbol + " wins!");
+        document.getElementById("result").innerHTML = (playerSymbol + " wins!");
         resetGame();
+        return true;
     } else if ((document.getElementById("b3").innerHTML == playerSymbol) && (document.getElementById("b6").innerHTML == playerSymbol) && (document.getElementById("b8").innerHTML == playerSymbol)) {
-        alert(playerSymbol + " wins!");
+        document.getElementById("result").innerHTML = (playerSymbol + " wins!");
         resetGame();
+        return true;
     } else if ((document.getElementById("b1").innerHTML == playerSymbol) && (document.getElementById("b5").innerHTML == playerSymbol) && (document.getElementById("b9").innerHTML == playerSymbol)) {
-        alert(playerSymbol + " wins!");
+        document.getElementById("result").innerHTML = (playerSymbol + " wins!");
         resetGame();
+        return true;
     } else if ((document.getElementById("b7").innerHTML == playerSymbol) && (document.getElementById("b5").innerHTML == playerSymbol) && (document.getElementById("b3").innerHTML == playerSymbol)) {
-        alert(playerSymbol + " wins!");
+        document.getElementById("result").innerHTML = (playerSymbol + " wins!");
         resetGame();
+        return true;
     }
 }
 
@@ -56,18 +64,17 @@ function fillSquare(clicked_id) {
     if(document.getElementById(clicked_id).innerHTML == "-") {
     	document.getElementById(clicked_id).innerHTML = playerSymbol;
         document.getElementById(clicked_id).classList.add("played");
-        checkWin();
         turn = turn + 1;
-        checkWin();
-        if (turn > 8) {
-            alert("It's a tie.");
+        if (!checkWin()) {
+            if (playerSymbol == "X") {
+                playerSymbol = "O";
+            } else {
+                playerSymbol = "X";
+            }
+        } 
+        if (turn > 9) {
+            document.getElementById("result").innerHTML = ("It's a tie.");
             resetGame();
-        }
-
-        if (playerSymbol == "X") {
-            playerSymbol = "O";
-        } else {
-            playerSymbol = "X";
-        }       
+        }     
     }
 }
