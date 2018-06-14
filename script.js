@@ -3,8 +3,9 @@ var ctx = canvas.getContext("2d");
 
 ctx.strokeStyle = "rgb(18, 201, 164)";
 let y = 0;
+let x  =  0;
 
-function draw(x) {
+function draw() {
   if (y >= 500) {
     y = 0;
   } else {
@@ -14,15 +15,15 @@ function draw(x) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (var i = 1; i < 11; i++) {
     ctx.beginPath();
-    ctx.arc(canvas.width /2, canvas.height / 2, 50 - 5 * i, 2 * Math.PI * (y / canvas.height) + (x / canvas.width), 2 * Math.PI * (y / canvas.height), false);
+    ctx.arc(canvas.width /2, canvas.height / 2, 50 - 5 * i, 2 * Math.PI * (y / canvas.height) + (x / canvas.width) *  Math.PI  *  2, 2 * Math.PI * (y / canvas.height), false);
     ctx.stroke();
   }
   window.requestAnimationFrame(draw);
 }
 draw();
+
 canvas.addEventListener("mousemove", function(e) {
   let rect = document.getElementById("canvas").getBoundingClientRect();
-  let x = e.clientX - rect.left;
+  x = e.clientX - rect.left;
   let y = e.clientY - rect.top;
-    draw(x);
 });
